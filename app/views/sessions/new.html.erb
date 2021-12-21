@@ -1,1 +1,28 @@
-<h1>Login to the ChatRoom</h1>
+<div class="ui middle aligned center aligned grid">
+  <div class="four wide column">
+    <h2 class="ui teal image heade">
+      <img src="" alt="" class="image">
+      <div class="content">Log-in to your account</div>
+    </h2>
+    <%= form_with(scope: :sessions, url: login_path, class: "ui large form", local: true) do |f| %>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <%= f.text_field :username, placeholder: "enter your username" %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <%= f.password_field :password, placeholder: "enter your password" %>
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <%= f.submit "Login", class: "ui fluid large teal submit button" %>
+      </div>
+      <div class="ui small message">
+        Don't have an account? <a href=#>Sign up</a>
+      </div>
+    <% end %>
+  </div>
+</div>
