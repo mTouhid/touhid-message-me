@@ -1,3 +1,4 @@
+<%= render 'layouts/errors', obj: @message %>
 <div class="ui equal width padded grid">
   <div class="stretched row">
     <div class="column">
@@ -19,10 +20,12 @@
             </div>
           </div>
           <div class="extra content">
+          <%= form_with(model: @message, local: true) do |f| %>
             <div class="ui fluid large action input">
-              <input type="text" placeholder="Type your message...">
-              <div class="ui button">Send</div>
+                <%= f.text_field :body, placeholder: "Type your message here..." %>
+                <%= f.submit "Send", class: "ui button" %>
             </div>
+            <% end %>
           </div>
         </div>
       </div>
