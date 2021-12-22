@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :require_logged_in
+
   def create
     @message = Message.new(params.require(:message).permit(:body))
     @message.user = current_user

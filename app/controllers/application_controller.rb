@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    if !logged_in?
+    if !logged_in? || session[:expires_at].to_time < Time.current
+      session[:user_id] = nil
       flash[:error] = "Sorry, you need to be logged in to perform this operation."
       redirect_to login_path
     end

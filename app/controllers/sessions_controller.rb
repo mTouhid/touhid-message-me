@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:sessions][:username])
     if @user && @user.authenticate(params[:sessions][:password])
       session[:user_id] = @user.id
+      session[:expires_at] = Time.current + 30.minutes 
       flash[:success] = "You have logged in successfully"
       redirect_to root_path
     else
